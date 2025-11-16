@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="category-page">
+  <h1>📂 Category: {{ page.category }}</h1>
+  
+  <nav class="breadcrumb" style="margin-bottom: 30px; padding: 10px 0; color: #666; font-size: 0.9em;">
+    <a href="{{ "/" | relative_url }}" style="color: #0066cc; text-decoration: none;">Home</a>
+    <span style="margin: 0 5px;">›</span>
+    <span style="color: #333;">{{ page.category }}</span>
+  </nav>
+
+  {% assign posts_in_category = site.categories[page.category] %}
+
+  {% if posts_in_category.size > 0 %}
+    <p style="color: #666; margin-bottom: 20px;">Found {{ posts_in_category.size }} post(s) in this category.</p>
+    
+    <ul style="list-style: none; padding: 0;">
+      {% for post in posts_in_category %}
+        <li style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+          <h2 style="margin: 5px 0;">
+            <a href="{{ post.url | relative_url }}" style="color: #0066cc; text-decoration: none;">{{ post.title }}</a>
+          </h2>
+          <p class="post-meta" style="color: #999; font-size: 0.9em; margin: 5px 0;">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+            {% if post.categories.size > 0 %}
+              <br>
+              <span style="color: #666;">{{ post.categories | join: " › " }}</span>
+            {% endif %}
+          </p>
+          {% if post.excerpt %}
+            <div style="margin-top: 10px; color: #555;">
+              {{ post.excerpt }}
+            </div>
+            <a href="{{ post.url | relative_url }}" style="color: #0066cc; text-decoration: none;">Read more →</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts found in this category.</p>
+  {% endif %}
+
+  <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee;">
+    <a href="{{ "/" | relative_url }}">← Back to all posts</a>
+  </div>
+</div>

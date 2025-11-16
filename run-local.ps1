@@ -4,14 +4,22 @@
 Write-Host "Starting Jekyll local development server..." -ForegroundColor Green
 Write-Host ""
 
+# Set Ruby path (adjust if your Ruby is installed elsewhere)
+$rubyPath = "C:\Ruby34-x64\bin"
+if (Test-Path $rubyPath) {
+    $env:Path = "$rubyPath;$env:Path"
+    Write-Host "✓ Ruby path added: $rubyPath" -ForegroundColor Green
+}
+
 # Check if Ruby is installed
 Write-Host "Checking Ruby installation..." -ForegroundColor Cyan
 try {
     $rubyVersion = ruby --version
     Write-Host "✓ Ruby found: $rubyVersion" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Ruby is not installed!" -ForegroundColor Red
-    Write-Host "Please install Ruby from https://rubyinstaller.org/" -ForegroundColor Yellow
+    Write-Host "✗ Ruby is not installed or not found!" -ForegroundColor Red
+    Write-Host "Expected location: C:\Ruby34-x64\bin" -ForegroundColor Yellow
+    Write-Host "Please verify Ruby installation or update the path in this script." -ForegroundColor Yellow
     exit 1
 }
 

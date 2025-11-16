@@ -191,7 +191,7 @@ By stacking simple neurons together:
 
 ## How Neural Networks Actually Work: Dense Connections
 
-![Neural network architecture diagram illustrating densely connected layers. On the left, four input features x1 through x4 are listed in a rounded rectangle box representing the input layer. Multiple lines connect from each input to three circular nodes in the middle representing hidden layer neurons. Each hidden neuron receives connections from all four inputs, demonstrating dense connectivity. These three hidden neurons then connect via converging lines to a single circular output node on the right, which produces the predicted value y for price. The diagram emphasizes that every input feature feeds into every hidden neuron, creating a fully connected network structure where the hidden layer automatically learns relevant feature combinations from the raw inputs.](/assets/images/deep-learning/neural-networks/week-1/neural_network_diagram2.png)
+![Neural network architecture diagram illustrating densely connected layers](/assets/images/deep-learning/neural-networks/week-1/neural_network_diagram2.png)
 
 ### The Real Implementation
 

@@ -1,142 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Blog - longhl104</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- KaTeX for LaTeX math rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <!-- Highlight.js for code syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-code"></i> Tech Blog</h1>
-            <p class="tagline">Exploring the world of technology, one post at a time</p>
-        </div>
-    </header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tech Blog - longhl104</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+		<!-- KaTeX for LaTeX math rendering -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+		/>
+		<!-- Highlight.js for code syntax highlighting -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1><i class="fas fa-code"></i> Tech Blog</h1>
+				<p class="tagline">
+					Exploring the world of technology, one post at a time
+				</p>
+			</div>
+		</header>
 
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+		<nav>
+			<div class="container">
+				<ul class="nav-links">
+					<li><a href="#home" class="active">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
 
-    <main class="container">
-        <div class="layout">
-            <!-- Sidebar with tree-like categories -->
-            <aside class="sidebar">
-                <h2>Categories</h2>
-                <div class="category-tree">
-                    <ul class="tree">
-                        <li>
-                            <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <span class="tree-label"><i class="fas fa-laptop-code"></i> Web Development</span>
-                            <ul class="tree-nested">
-                                <li>
-                                    <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="tree-label"><i class="fas fa-layer-group"></i> Frontend</span>
-                                    <ul class="tree-nested">
-                                        <li><a href="#" class="tree-link" data-category="web-development/frontend/react"><i class="fab fa-react"></i> React</a></li>
-                                        <li><a href="#" class="tree-link" data-category="web-development/frontend/vue"><i class="fab fa-vuejs"></i> Vue.js</a></li>
-                                        <li><a href="#" class="tree-link" data-category="web-development/frontend/angular"><i class="fab fa-angular"></i> Angular</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                                    <span class="tree-label"><i class="fas fa-server"></i> Backend</span>
-                                    <ul class="tree-nested">
-                                        <li><a href="#" class="tree-link" data-category="web-development/backend/node"><i class="fab fa-node-js"></i> Node.js</a></li>
-                                        <li><a href="#" class="tree-link" data-category="web-development/backend/python"><i class="fab fa-python"></i> Python</a></li>
-                                        <li><a href="#" class="tree-link" data-category="web-development/backend/java"><i class="fab fa-java"></i> Java</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <span class="tree-label"><i class="fas fa-database"></i> Data Science</span>
-                            <ul class="tree-nested">
-                                <li><a href="#" class="tree-link" data-category="data-science/machine-learning"><i class="fas fa-brain"></i> Machine Learning</a></li>
-                                <li><a href="#" class="tree-link" data-category="data-science/data-analysis"><i class="fas fa-chart-line"></i> Data Analysis</a></li>
-                                <li><a href="#" class="tree-link" data-category="data-science/visualization"><i class="fas fa-chart-bar"></i> Data Visualization</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <span class="tree-label"><i class="fas fa-cloud"></i> DevOps</span>
-                            <ul class="tree-nested">
-                                <li><a href="#" class="tree-link" data-category="devops/docker"><i class="fab fa-docker"></i> Docker</a></li>
-                                <li><a href="#" class="tree-link" data-category="devops/kubernetes"><i class="fas fa-dharmachakra"></i> Kubernetes</a></li>
-                                <li><a href="#" class="tree-link" data-category="devops/ci-cd"><i class="fas fa-sync-alt"></i> CI/CD</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <span class="tree-label"><i class="fas fa-mobile-alt"></i> Mobile Development</span>
-                            <ul class="tree-nested">
-                                <li><a href="#" class="tree-link" data-category="mobile-development/ios"><i class="fab fa-apple"></i> iOS</a></li>
-                                <li><a href="#" class="tree-link" data-category="mobile-development/android"><i class="fab fa-android"></i> Android</a></li>
-                                <li><a href="#" class="tree-link" data-category="mobile-development/react-native"><i class="fab fa-react"></i> React Native</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="tree-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <span class="tree-label"><i class="fas fa-shield-alt"></i> Security</span>
-                            <ul class="tree-nested">
-                                <li><a href="#" class="tree-link" data-category="security/web-security"><i class="fas fa-lock"></i> Web Security</a></li>
-                                <li><a href="#" class="tree-link" data-category="security/cryptography"><i class="fas fa-key"></i> Cryptography</a></li>
-                                <li><a href="#" class="tree-link" data-category="security/penetration-testing"><i class="fas fa-user-secret"></i> Penetration Testing</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
+		<main class="container">
+			<div class="layout">
+				<!-- Sidebar with tree-like categories -->
+				<aside class="sidebar">
+					<h2>Categories</h2>
+					<div class="category-tree">
+						<ul class="tree">
+							<li>
+								<span class="tree-toggle"
+									><i class="fas fa-chevron-down"></i
+								></span>
+								<span class="tree-label"
+									><i class="fas fa-brain"></i> Deep Learning</span
+								>
+								<ul class="tree-nested">
+									<li>
+										<span class="tree-toggle"
+											><i class="fas fa-chevron-down"></i
+										></span>
+										<span class="tree-label"
+											><i class="fas fa-graduation-cap"></i> DeepLearning.AI
+											Course Notes</span
+										>
+										<ul class="tree-nested">
+											<li>
+												<span class="tree-toggle"
+													><i class="fas fa-chevron-down"></i
+												></span>
+												<span class="tree-label"
+													><i class="fas fa-network-wired"></i> Neural Networks
+													and Deep Learning</span
+												>
+												<ul class="tree-nested">
+													<li>
+														<span class="tree-toggle"
+															><i class="fas fa-chevron-down"></i
+														></span>
+														<span class="tree-label"
+															><i class="fas fa-calendar-week"></i> Week 1:
+															Introduction to Deep Learning</span
+														>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</aside>
 
-            <!-- Main content area -->
-            <div class="content">
-                <section id="home-section">
-                    <h2>Latest Posts</h2>
-                    <div id="blog-posts" class="blog-grid">
-                        <!-- Blog posts will be dynamically loaded here -->
-                    </div>
-                </section>
+				<!-- Main content area -->
+				<div class="content">
+					<section id="home-section">
+						<h2>Latest Posts</h2>
+						<div id="blog-posts" class="blog-grid">
+							<!-- Blog posts will be dynamically loaded here -->
+						</div>
+					</section>
 
-                <section id="post-detail" class="hidden">
-                    <button id="back-btn" class="back-button"><i class="fas fa-arrow-left"></i> Back</button>
-                    <article id="post-content">
-                        <!-- Individual post content will be loaded here -->
-                    </article>
-                </section>
-            </div>
-        </div>
-    </main>
+					<section id="post-detail" class="hidden">
+						<button id="back-btn" class="back-button">
+							<i class="fas fa-arrow-left"></i> Back
+						</button>
+						<article id="post-content">
+							<!-- Individual post content will be loaded here -->
+						</article>
+					</section>
+				</div>
+			</div>
+		</main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 longhl104. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/longhl104" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
+		<footer>
+			<div class="container">
+				<p>&copy; 2025 longhl104. All rights reserved.</p>
+				<div class="social-links">
+					<a href="https://github.com/longhl104" target="_blank"
+						><i class="fab fa-github"></i
+					></a>
+					<a href="#"><i class="fab fa-linkedin"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+				</div>
+			</div>
+		</footer>
 
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
-    <!-- KaTeX for LaTeX math rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-    <!-- Highlight.js for code syntax highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="script.js"></script>
-</body>
+		<!-- Marked.js for Markdown parsing -->
+		<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+		<!-- KaTeX for LaTeX math rendering -->
+		<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+		<!-- Highlight.js for code syntax highlighting -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+		<script src="script.js"></script>
+	</body>
 </html>

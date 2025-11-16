@@ -1,80 +1,82 @@
 // Dark Mode Toggle
-(function () {
+(function ()
+{
   "use strict";
 
   // Initialize theme on page load
-  function initTheme() {
-    console.log("🎨 Initializing theme...");
+  function initTheme()
+  {
     const savedTheme = localStorage.getItem("theme") || "light";
-    console.log("📦 Saved theme:", savedTheme);
-    applyTheme(savedTheme, false);
+    applyTheme(savedTheme);
   }
 
   // Apply theme by enabling/disabling stylesheets
-  function applyTheme(theme, log = true) {
-    if (log) console.log("🎨 Applying theme:", theme);
-
+  function applyTheme(theme)
+  {
     const lightTheme = document.getElementById("light-theme");
     const darkTheme = document.getElementById("dark-theme");
 
-    if (!lightTheme || !darkTheme) {
-      console.error("❌ Theme stylesheets not found!");
+    if (!lightTheme || !darkTheme)
+    {
       return;
     }
 
-    if (theme === "dark") {
+    if (theme === "dark")
+    {
       lightTheme.disabled = true;
       darkTheme.disabled = false;
-      if (log) console.log("✓ Dark theme enabled");
-    } else {
+    } else
+    {
       lightTheme.disabled = false;
       darkTheme.disabled = true;
-      if (log) console.log("✓ Light theme enabled");
     }
 
     updateIcon(theme);
   }
 
   // Update theme toggle icon
-  function updateIcon(theme) {
+  function updateIcon(theme)
+  {
     const themeIcon = document.getElementById("theme-icon");
-    if (themeIcon) {
+    if (themeIcon)
+    {
       themeIcon.textContent = theme === "dark" ? "☀️" : "🌙";
-      console.log("🔄 Icon updated:", themeIcon.textContent);
     }
   }
 
   // Toggle between light and dark theme
-  function toggleTheme() {
-    console.log("🖱️ Theme toggle clicked!");
+  function toggleTheme()
+  {
     const currentTheme = localStorage.getItem("theme") || "light";
     const newTheme = currentTheme === "dark" ? "light" : "dark";
-    console.log("🔄 Switching from", currentTheme, "to", newTheme);
 
     localStorage.setItem("theme", newTheme);
     applyTheme(newTheme);
   }
 
   // Setup theme toggle button
-  function setupToggle() {
+  function setupToggle()
+  {
     const themeToggle = document.getElementById("theme-toggle");
 
-    if (!themeToggle) {
-      console.warn("⚠️ Theme toggle button not found");
+    if (!themeToggle)
+    {
       return;
     }
 
     themeToggle.addEventListener("click", toggleTheme);
-    console.log("✅ Theme toggle ready");
   }
 
   // Initialize when DOM is ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
+  if (document.readyState === "loading")
+  {
+    document.addEventListener("DOMContentLoaded", function ()
+    {
       initTheme();
       setupToggle();
     });
-  } else {
+  } else
+  {
     initTheme();
     setupToggle();
   }

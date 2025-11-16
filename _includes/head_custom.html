@@ -1,15 +1,64 @@
+<!-- Dark Mode Styles -->
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/just-the-docs-light.css' | relative_url }}"
+  id="light-theme"
+/>
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/just-the-docs-dark.css' | relative_url }}"
+  id="dark-theme"
+  disabled
+/>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--body-text-color);
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .theme-toggle:focus {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+  }
+</style>
+
+<!-- MathJax Configuration -->
 <script>
   MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
       processEscapes: true,
-      processEnvironments: true
+      processEnvironments: true,
     },
     options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
+      skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+    },
+  }
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>

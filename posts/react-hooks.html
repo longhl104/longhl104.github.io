@@ -1,0 +1,99 @@
+<h1>Getting Started with React Hooks</h1>
+
+<p>React Hooks revolutionized the way we write React components by allowing us to use state and other React features in functional components. In this comprehensive guide, we'll explore the most commonly used hooks and learn how to leverage them effectively.</p>
+
+<h2>What are React Hooks?</h2>
+
+<p>Hooks are functions that let you "hook into" React state and lifecycle features from function components. They were introduced in React 16.8 and have since become the preferred way to write React components.</p>
+
+<h3>Key Benefits</h3>
+
+<ul>
+    <li>Write cleaner, more readable code</li>
+    <li>Reuse stateful logic without changing component hierarchy</li>
+    <li>Split complex components into smaller functions</li>
+    <li>Avoid the confusion of class components and <code>this</code></li>
+</ul>
+
+<h2>The useState Hook</h2>
+
+<p>The <code>useState</code> hook is the most fundamental hook. It allows you to add state to functional components.</p>
+
+<pre><code>import React, { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;You clicked {count} times&lt;/p&gt;
+            &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+                Click me
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+
+<h2>The useEffect Hook</h2>
+
+<p>The <code>useEffect</code> hook lets you perform side effects in function components. It serves the same purpose as <code>componentDidMount</code>, <code>componentDidUpdate</code>, and <code>componentWillUnmount</code> combined.</p>
+
+<pre><code>import React, { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+    const [user, setUser] = useState(null);
+
+    useEffect(() =&gt; {
+        // Fetch user data
+        fetch(`/api/users/${userId}`)
+            .then(response =&gt; response.json())
+            .then(data =&gt; setUser(data));
+
+        // Cleanup function
+        return () =&gt; {
+            // Cancel any pending requests
+        };
+    }, [userId]); // Re-run when userId changes
+
+    return user ? &lt;div&gt;{user.name}&lt;/div&gt; : &lt;div&gt;Loading...&lt;/div&gt;;
+}</code></pre>
+
+<h2>Custom Hooks</h2>
+
+<p>One of the most powerful features of hooks is the ability to create your own custom hooks. This allows you to extract component logic into reusable functions.</p>
+
+<pre><code>function useWindowSize() {
+    const [size, setSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+
+    useEffect(() =&gt; {
+        const handleResize = () =&gt; {
+            setSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () =&gt; window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return size;
+}</code></pre>
+
+<h2>Best Practices</h2>
+
+<ol>
+    <li><strong>Only call hooks at the top level</strong> - Don't call hooks inside loops, conditions, or nested functions</li>
+    <li><strong>Only call hooks from React functions</strong> - Call them from functional components or custom hooks</li>
+    <li><strong>Use the dependency array correctly</strong> - Always include all values from the component scope that change over time</li>
+    <li><strong>Extract complex logic into custom hooks</strong> - Keep your components clean and focused</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>React Hooks provide a more direct API to the React concepts you already know. They enable you to write cleaner, more maintainable code while taking full advantage of React's features. Start by mastering <code>useState</code> and <code>useEffect</code>, then explore other hooks like <code>useContext</code>, <code>useReducer</code>, and <code>useMemo</code> as your needs grow.</p>
+
+<p>Happy coding! 🚀</p>

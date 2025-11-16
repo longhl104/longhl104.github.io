@@ -1,0 +1,145 @@
+<h1>Building RESTful APIs with Node.js</h1>
+
+<p>Creating robust and scalable RESTful APIs is a fundamental skill for modern backend developers. In this guide, we'll walk through building a complete REST API using Node.js and Express.js.</p>
+
+<h2>Setting Up Your Project</h2>
+
+<p>First, let's initialize a new Node.js project and install the necessary dependencies:</p>
+
+<pre><code>npm init -y
+npm install express mongoose dotenv cors
+npm install --save-dev nodemon</code></pre>
+
+<h3>Project Structure</h3>
+
+<p>A well-organized project structure is crucial for maintainability:</p>
+
+<pre><code>project/
+├── src/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── app.js
+├── .env
+├── .gitignore
+└── server.js</code></pre>
+
+<h2>Creating Your Express Server</h2>
+
+<p>Let's start by setting up a basic Express server:</p>
+
+<pre><code>const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/api/health', (req, res) =&gt; {
+    res.json({ status: 'OK', message: 'Server is running' });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) =&gt; {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =&gt; {
+    console.log(`Server running on port ${PORT}`);
+});</code></pre>
+
+<h2>Defining Routes</h2>
+
+<p>RESTful APIs follow a standard pattern for HTTP methods:</p>
+
+<ul>
+    <li><strong>GET</strong> - Retrieve resources</li>
+    <li><strong>POST</strong> - Create new resources</li>
+    <li><strong>PUT</strong> - Update existing resources</li>
+    <li><strong>DELETE</strong> - Remove resources</li>
+</ul>
+
+<pre><code>const express = require('express');
+const router = express.Router();
+
+// GET all users
+router.get('/users', async (req, res) =&gt; {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// GET single user
+router.get('/users/:id', async (req, res) =&gt; {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// POST new user
+router.post('/users', async (req, res) =&gt; {
+    try {
+        const user = new User(req.body);
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+module.exports = router;</code></pre>
+
+<h2>Authentication Middleware</h2>
+
+<p>Protecting your API endpoints is essential. Here's a simple JWT authentication middleware:</p>
+
+<pre><code>const jwt = require('jsonwebtoken');
+
+const authenticateToken = (req, res, next) =&gt; {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ error: 'Access token required' });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) =&gt; {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid token' });
+        }
+        req.user = user;
+        next();
+    });
+};</code></pre>
+
+<h2>Best Practices</h2>
+
+<ol>
+    <li><strong>Use appropriate HTTP status codes</strong> - 200, 201, 400, 401, 404, 500, etc.</li>
+    <li><strong>Implement proper error handling</strong> - Always catch and handle errors gracefully</li>
+    <li><strong>Validate input data</strong> - Use libraries like Joi or express-validator</li>
+    <li><strong>Secure your API</strong> - Implement authentication, rate limiting, and CORS properly</li>
+    <li><strong>Use environment variables</strong> - Keep sensitive data out of your codebase</li>
+    <li><strong>Document your API</strong> - Use tools like Swagger or Postman</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>Building RESTful APIs with Node.js and Express is straightforward once you understand the fundamentals. Focus on creating clean, maintainable code with proper error handling and security measures. As your API grows, consider implementing features like pagination, caching, and rate limiting to improve performance and user experience.</p>

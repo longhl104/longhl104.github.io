@@ -1,0 +1,251 @@
+<h1>Vue 3 Composition API Deep Dive</h1>
+
+<p>Vue 3's Composition API represents a paradigm shift in how we structure and organize our Vue components. This guide explores the Composition API in depth and shows you how to write more maintainable and reusable code.</p>
+
+<h2>Why Composition API?</h2>
+
+<p>The Options API served us well, but as applications grew more complex, several limitations became apparent:</p>
+
+<ul>
+    <li>Code for a single feature was scattered across different options</li>
+    <li>Reusing logic between components was challenging</li>
+    <li>TypeScript integration was not ideal</li>
+    <li>Large components became difficult to maintain</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The Composition API is built around the <code>setup()</code> function, which runs before the component is created:</p>
+
+<pre><code>&lt;script&gt;
+import { ref, computed, onMounted } from 'vue';
+
+export default {
+    setup() {
+        // Reactive state
+        const count = ref(0);
+        
+        // Computed property
+        const doubleCount = computed(() =&gt; count.value * 2);
+        
+        // Method
+        const increment = () =&gt; {
+            count.value++;
+        };
+        
+        // Lifecycle hook
+        onMounted(() =&gt; {
+            console.log('Component mounted!');
+        });
+        
+        // Expose to template
+        return {
+            count,
+            doubleCount,
+            increment
+        };
+    }
+};
+&lt;/script&gt;</code></pre>
+
+<h2>Script Setup Syntax</h2>
+
+<p>Vue 3.2 introduced <code>&lt;script setup&gt;</code>, a more concise syntax:</p>
+
+<pre><code>&lt;script setup&gt;
+import { ref, computed, onMounted } from 'vue';
+
+const count = ref(0);
+const doubleCount = computed(() =&gt; count.value * 2);
+
+const increment = () =&gt; {
+    count.value++;
+};
+
+onMounted(() =&gt; {
+    console.log('Component mounted!');
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+        &lt;p&gt;Double: {{ doubleCount }}&lt;/p&gt;
+        &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+<h2>Reactivity APIs</h2>
+
+<h3>ref() vs reactive()</h3>
+
+<p><code>ref()</code> works with primitive values and objects:</p>
+
+<pre><code>const count = ref(0);
+count.value++; // Access with .value
+
+const user = ref({ name: 'John', age: 30 });
+user.value.name = 'Jane';</code></pre>
+
+<p><code>reactive()</code> works only with objects:</p>
+
+<pre><code>const state = reactive({
+    count: 0,
+    name: 'John'
+});
+
+state.count++; // No .value needed</code></pre>
+
+<h2>Composables (Composition Functions)</h2>
+
+<p>Composables are the Composition API's answer to mixins. They allow you to extract and reuse logic:</p>
+
+<pre><code>// composables/useCounter.js
+import { ref, computed } from 'vue';
+
+export function useCounter(initialValue = 0) {
+    const count = ref(initialValue);
+    const doubleCount = computed(() =&gt; count.value * 2);
+    
+    const increment = () =&gt; count.value++;
+    const decrement = () =&gt; count.value--;
+    const reset = () =&gt; count.value = initialValue;
+    
+    return {
+        count,
+        doubleCount,
+        increment,
+        decrement,
+        reset
+    };
+}
+
+// In component
+import { useCounter } from '@/composables/useCounter';
+
+const { count, increment, reset } = useCounter(10);</code></pre>
+
+<h2>Lifecycle Hooks</h2>
+
+<p>All lifecycle hooks have composition API equivalents:</p>
+
+<pre><code>import {
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    onUpdated,
+    onBeforeUnmount,
+    onUnmounted
+} from 'vue';
+
+onMounted(() =&gt; {
+    console.log('Component mounted');
+});
+
+onBeforeUnmount(() =&gt; {
+    console.log('Cleaning up...');
+});</code></pre>
+
+<h2>Computed Properties and Watchers</h2>
+
+<pre><code>import { ref, computed, watch, watchEffect } from 'vue';
+
+const firstName = ref('John');
+const lastName = ref('Doe');
+
+// Computed
+const fullName = computed(() =&gt; {
+    return `${firstName.value} ${lastName.value}`;
+});
+
+// Watch specific source
+watch(firstName, (newValue, oldValue) =&gt; {
+    console.log(`Name changed from ${oldValue} to ${newValue}`);
+});
+
+// Watch multiple sources
+watch([firstName, lastName], ([newFirst, newLast]) =&gt; {
+    console.log(`Full name: ${newFirst} ${newLast}`);
+});
+
+// WatchEffect - automatically tracks dependencies
+watchEffect(() =&gt; {
+    console.log(`Full name: ${firstName.value} ${lastName.value}`);
+});</code></pre>
+
+<h2>Provide/Inject</h2>
+
+<p>Share data across component hierarchies without prop drilling:</p>
+
+<pre><code>// Parent component
+import { provide, ref } from 'vue';
+
+const theme = ref('dark');
+provide('theme', theme);
+
+// Child component (any level deep)
+import { inject } from 'vue';
+
+const theme = inject('theme');
+console.log(theme.value); // 'dark'</code></pre>
+
+<h2>TypeScript Support</h2>
+
+<p>The Composition API works beautifully with TypeScript:</p>
+
+<pre><code>&lt;script setup lang="ts"&gt;
+import { ref, computed } from 'vue';
+
+interface User {
+    name: string;
+    age: number;
+}
+
+const user = ref&lt;User&gt;({
+    name: 'John',
+    age: 30
+});
+
+const userInfo = computed(() =&gt; {
+    return `${user.value.name} is ${user.value.age} years old`;
+});
+&lt;/script&gt;</code></pre>
+
+<h2>Best Practices</h2>
+
+<ol>
+    <li><strong>Use <code>&lt;script setup&gt;</code></strong> - It's more concise and performant</li>
+    <li><strong>Create composables for reusable logic</strong> - Keep components focused</li>
+    <li><strong>Choose ref() for simplicity</strong> - Unless you need deep reactivity</li>
+    <li><strong>Name composables with "use" prefix</strong> - Follow the convention</li>
+    <li><strong>Return only what's needed</strong> - Don't expose internal implementation details</li>
+    <li><strong>Use TypeScript</strong> - Get better IDE support and catch errors early</li>
+</ol>
+
+<h2>Common Patterns</h2>
+
+<h3>Async Data Fetching</h3>
+
+<pre><code>import { ref, onMounted } from 'vue';
+
+const data = ref(null);
+const loading = ref(false);
+const error = ref(null);
+
+onMounted(async () =&gt; {
+    loading.value = true;
+    try {
+        const response = await fetch('/api/data');
+        data.value = await response.json();
+    } catch (e) {
+        error.value = e;
+    } finally {
+        loading.value = false;
+    }
+});</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>The Composition API makes Vue 3 more powerful and flexible. It enables better code organization, improved reusability, and excellent TypeScript support. While there's a learning curve, the benefits in terms of maintainability and scalability make it worth the investment.</p>
+
+<p>Start by converting a simple component, create your first composable, and gradually adopt the Composition API in your projects. You'll soon appreciate the cleaner, more organized code structure it provides!</p>

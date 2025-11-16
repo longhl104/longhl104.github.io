@@ -1,0 +1,250 @@
+<h1>Python Data Analysis with Pandas</h1>
+
+<p>Pandas is the cornerstone of data analysis in Python. This comprehensive guide will teach you how to leverage Pandas to manipulate, analyze, and gain insights from your data.</p>
+
+<h2>What is Pandas?</h2>
+
+<p>Pandas is a powerful, open-source data analysis and manipulation library for Python. It provides fast, flexible, and expressive data structures designed to work with structured (tabular, multidimensional) data.</p>
+
+<h3>Key Features</h3>
+
+<ul>
+    <li>DataFrame and Series data structures</li>
+    <li>Tools for reading and writing data in various formats</li>
+    <li>Data alignment and handling of missing data</li>
+    <li>Reshaping and pivoting datasets</li>
+    <li>Label-based slicing, indexing, and subsetting</li>
+    <li>Group by operations for split-apply-combine</li>
+    <li>Time series functionality</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>Install Pandas and commonly used libraries:</p>
+
+<pre><code>pip install pandas numpy matplotlib seaborn</code></pre>
+
+<p>Import Pandas:</p>
+
+<pre><code>import pandas as pd
+import numpy as np</code></pre>
+
+<h2>Core Data Structures</h2>
+
+<h3>Series</h3>
+
+<p>A one-dimensional labeled array:</p>
+
+<pre><code># Create a Series
+data = pd.Series([10, 20, 30, 40, 50])
+print(data)
+
+# Series with custom index
+data = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
+print(data['b'])  # 20</code></pre>
+
+<h3>DataFrame</h3>
+
+<p>A two-dimensional labeled data structure:</p>
+
+<pre><code># Create a DataFrame
+data = {
+    'Name': ['John', 'Anna', 'Peter', 'Linda'],
+    'Age': [28, 22, 35, 32],
+    'City': ['New York', 'Paris', 'Berlin', 'London']
+}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+
+<h2>Reading and Writing Data</h2>
+
+<pre><code># Read CSV
+df = pd.read_csv('data.csv')
+
+# Read Excel
+df = pd.read_excel('data.xlsx', sheet_name='Sheet1')
+
+# Read JSON
+df = pd.read_json('data.json')
+
+# Write to CSV
+df.to_csv('output.csv', index=False)
+
+# Write to Excel
+df.to_excel('output.xlsx', sheet_name='Data', index=False)</code></pre>
+
+<h2>Data Exploration</h2>
+
+<pre><code># Display first/last rows
+print(df.head())      # First 5 rows
+print(df.tail(10))    # Last 10 rows
+
+# Basic information
+print(df.info())      # Column types and non-null counts
+print(df.describe())  # Statistical summary
+print(df.shape)       # Dimensions (rows, columns)
+
+# Column names and types
+print(df.columns)
+print(df.dtypes)</code></pre>
+
+<h2>Data Selection and Indexing</h2>
+
+<pre><code># Select single column
+ages = df['Age']
+
+# Select multiple columns
+subset = df[['Name', 'Age']]
+
+# Select rows by index
+first_row = df.iloc[0]       # By position
+row_by_label = df.loc[0]     # By label
+
+# Boolean indexing
+adults = df[df['Age'] &gt;= 30]
+filtered = df[(df['Age'] &gt; 25) & (df['City'] == 'New York')]
+
+# Select specific cells
+value = df.loc[0, 'Name']
+value = df.iloc[0, 0]</code></pre>
+
+<h2>Data Cleaning</h2>
+
+<h3>Handling Missing Data</h3>
+
+<pre><code># Check for missing values
+print(df.isnull().sum())
+
+# Drop rows with missing values
+df_clean = df.dropna()
+
+# Fill missing values
+df_filled = df.fillna(0)
+df['Age'].fillna(df['Age'].mean(), inplace=True)
+
+# Forward fill or backward fill
+df.fillna(method='ffill')  # Forward fill
+df.fillna(method='bfill')  # Backward fill</code></pre>
+
+<h3>Removing Duplicates</h3>
+
+<pre><code># Check for duplicates
+print(df.duplicated().sum())
+
+# Remove duplicates
+df_unique = df.drop_duplicates()
+
+# Remove duplicates based on specific columns
+df.drop_duplicates(subset=['Name'], keep='first')</code></pre>
+
+<h2>Data Transformation</h2>
+
+<pre><code># Add new column
+df['Age_Next_Year'] = df['Age'] + 1
+
+# Apply function to column
+df['Age_Squared'] = df['Age'].apply(lambda x: x ** 2)
+
+# Map values
+df['Senior'] = df['Age'].map(lambda x: 'Yes' if x &gt;= 65 else 'No')
+
+# Replace values
+df['City'].replace('New York', 'NYC', inplace=True)
+
+# Rename columns
+df.rename(columns={'Age': 'Years', 'City': 'Location'}, inplace=True)</code></pre>
+
+<h2>Grouping and Aggregation</h2>
+
+<pre><code># Group by single column
+city_groups = df.groupby('City')
+
+# Calculate aggregate statistics
+print(df.groupby('City')['Age'].mean())
+print(df.groupby('City')['Age'].agg(['mean', 'min', 'max']))
+
+# Multiple aggregations
+result = df.groupby('City').agg({
+    'Age': ['mean', 'min', 'max'],
+    'Name': 'count'
+})
+
+# Group by multiple columns
+df.groupby(['City', 'Senior'])['Age'].mean()</code></pre>
+
+<h2>Merging and Joining</h2>
+
+<pre><code># Concatenate DataFrames
+df_combined = pd.concat([df1, df2], ignore_index=True)
+
+# Merge (SQL-style joins)
+merged = pd.merge(df1, df2, on='ID', how='inner')
+merged = pd.merge(df1, df2, on='ID', how='left')
+merged = pd.merge(df1, df2, on='ID', how='outer')
+
+# Join on index
+df1.join(df2, on='key_column')</code></pre>
+
+<h2>Pivot Tables</h2>
+
+<pre><code># Create pivot table
+pivot = df.pivot_table(
+    values='Age',
+    index='City',
+    columns='Senior',
+    aggfunc='mean'
+)
+
+# Multiple aggregation functions
+pivot = df.pivot_table(
+    values='Age',
+    index='City',
+    aggfunc=['mean', 'count', 'sum']
+)</code></pre>
+
+<h2>Time Series Analysis</h2>
+
+<pre><code># Convert to datetime
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Set datetime index
+df.set_index('Date', inplace=True)
+
+# Resample time series
+monthly = df.resample('M').mean()
+weekly = df.resample('W').sum()
+
+# Rolling window calculations
+df['Rolling_Mean'] = df['Value'].rolling(window=7).mean()
+df['Rolling_Std'] = df['Value'].rolling(window=7).std()</code></pre>
+
+<h2>Best Practices</h2>
+
+<ol>
+    <li><strong>Use vectorized operations</strong> - Avoid loops when possible</li>
+    <li><strong>Chain operations carefully</strong> - Use method chaining for readability</li>
+    <li><strong>Handle missing data explicitly</strong> - Don't ignore NaN values</li>
+    <li><strong>Use appropriate data types</strong> - Convert columns to optimal types</li>
+    <li><strong>Profile your code</strong> - Identify bottlenecks for large datasets</li>
+    <li><strong>Document your analysis</strong> - Use Jupyter notebooks for exploration</li>
+</ol>
+
+<h2>Performance Tips</h2>
+
+<pre><code># Use categorical data for repeated strings
+df['Category'] = df['Category'].astype('category')
+
+# Read only necessary columns
+df = pd.read_csv('data.csv', usecols=['Name', 'Age'])
+
+# Use query for complex filtering
+result = df.query('Age &gt; 30 and City == "New York"')
+
+# Optimize data types
+df['Age'] = df['Age'].astype('int8')  # If values are small</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>Pandas is an essential tool for any data professional. Master these fundamentals, and you'll be able to handle most data analysis tasks efficiently. Practice with real datasets, explore the extensive documentation, and gradually incorporate advanced features like MultiIndex and custom aggregations.</p>
+
+<p>Remember: clean, well-structured data is the foundation of good analysis. Spend time understanding your data before diving into complex operations!</p>

@@ -1,8 +1,8 @@
 # Site settings
-title: My Blog
+title: Long's Blog
 email: longlunglay1998@gmail.com
 description: >-
-  A blog with support for LaTeX equations
+  A place to share my thoughts on technology, programming, and more.
 baseurl: ""
 url: "https://longhl104.github.io"
 github_username: longhl104

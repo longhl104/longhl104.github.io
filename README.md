@@ -1,4 +1,4 @@
-# My Blog
+# Long's Blog
 
 A Jekyll-powered blog with LaTeX support, hosted on GitHub Pages.
 

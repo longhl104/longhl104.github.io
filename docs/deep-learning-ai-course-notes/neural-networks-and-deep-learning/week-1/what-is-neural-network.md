@@ -3,6 +3,7 @@ title: What is a Neural Network?
 parent: Week 1 - Introduction to Deep Learning
 grand_parent: Neural Networks and Deep Learning
 nav_order: 1
+last_modified_date: 2025-11-16 09:52:00 +1100
 ---
 
 # What is a Neural Network?

@@ -12,7 +12,7 @@ This is a place where I share my knowledge and experiences on various topics inc
 
 ## Latest Posts
 
-{% assign sorted_pages = site.html_pages | where_exp: "page", "page.last_modified_at" | where_exp: "page", "page.nav_exclude != true" | sort: "last_modified_at" | reverse %}
+{% assign sorted_pages = site.html_pages | where_exp: "page", "page.nav_exclude != true" | sort: "last_modified_at" | reverse %}
 
 {% for page in sorted_pages limit:5 %}
   {% if page.title and page.title != "Home" and page.title != "404" and page.layout != "home" and page.has_children != true %}

@@ -1,0 +1,33 @@
+# Site settings
+title: My Blog
+email: longlunglay1998@gmail.com
+description: >-
+  A blog with support for LaTeX equations
+baseurl: ""
+url: "https://longhl104.github.io"
+github_username: longhl104
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  math_engine: mathjax
+
+# Theme
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

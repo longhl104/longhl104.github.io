@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article>
+  <header>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      {% if page.author %} • {{ page.author }}{% endif %}
+    </p>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="post-tags">
+    <strong>Tags:</strong>
+    {% for tag in page.tags %}
+      <span style="background-color: #eee; padding: 3px 8px; margin-right: 5px; border-radius: 3px;">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>
+
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+  <a href="{{ "/" | relative_url }}">← Back to all posts</a>
+</div>

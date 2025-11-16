@@ -9,6 +9,9 @@ A modern, tree-structured tech blog built with vanilla HTML, CSS, and JavaScript
 - 🎨 **Modern UI** - Clean, professional design with smooth animations and transitions
 - 🔍 **Category Filtering** - Filter posts by specific categories or view all posts
 - 📝 **Blog Post System** - Easy-to-manage blog posts with metadata (date, author, category)
+- 📄 **Markdown Support** - Write posts in Markdown with full formatting support
+- 🧮 **LaTeX Math Rendering** - Display mathematical equations using KaTeX
+- 💻 **Syntax Highlighting** - Beautiful code blocks with Highlight.js
 - 🚀 **Static Site** - Fast loading, no backend required, perfect for GitHub Pages
 - 💫 **Interactive Features** - Smooth transitions, hover effects, and dynamic content loading
 
@@ -109,7 +112,42 @@ git push origin main
 
 ## Adding New Blog Posts
 
-### Step 1: Create the HTML content
+You can write blog posts in either **HTML** or **Markdown** format. Markdown posts support LaTeX math equations!
+
+### Option 1: Markdown Post (Recommended)
+
+Create a new Markdown file in the `posts/` directory (e.g., `posts/my-new-post.md`):
+
+```markdown
+# Your Post Title
+
+Your introduction paragraph with **bold** and *italic* text.
+
+## Section with Math
+
+The quadratic formula is: $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$
+
+Display equations use double dollar signs:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+## Code Examples
+
+\```python
+def hello_world():
+    print("Hello, World!")
+\```
+
+### Lists and More
+
+- Item 1
+- Item 2
+- Item 3
+```
+
+### Option 2: HTML Post
 
 Create a new HTML file in the `posts/` directory (e.g., `posts/my-new-post.html`):
 
@@ -133,17 +171,72 @@ function example() {
 
 Edit `script.js` and add your post to the `blogPosts` array:
 
+**For Markdown posts:**
+
 ```javascript
 {
-    id: 7,  // Increment the ID
+    id: 8,  // Increment the ID
     title: "Your Post Title",
     category: "web-development/frontend/react",  // Use existing category path
     date: "2025-01-20",
     author: "longhl104",
     excerpt: "A brief description of your post...",
-    content: "posts/my-new-post.html"
+    content: "posts/my-new-post.md",
+    isMarkdown: true  // Important: Set to true for markdown!
 }
 ```
+
+**For HTML posts:**
+
+```javascript
+{
+    id: 8,  // Increment the ID
+    title: "Your Post Title",
+    category: "web-development/frontend/react",
+    date: "2025-01-20",
+    author: "longhl104",
+    excerpt: "A brief description of your post...",
+    content: "posts/my-new-post.html",
+    isMarkdown: false  // or omit this line
+}
+```
+
+## Writing LaTeX Math Equations
+
+The blog supports both inline and display math:
+
+### Inline Math
+
+Use single dollar signs for inline equations:
+
+```markdown
+The pythagorean theorem is $a^2 + b^2 = c^2$.
+```
+
+### Display Math
+
+Use double dollar signs for centered display equations:
+
+```markdown
+$$
+E = mc^2
+$$
+```
+
+### Complex Equations
+
+You can write complex mathematical expressions:
+
+```markdown
+$$
+\mathbf{A} = \begin{bmatrix} 
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+$$
+```
+
+For more LaTeX syntax, visit the [KaTeX documentation](https://katex.org/docs/supported.html).
 
 ### Step 3: (Optional) Add new categories
 
@@ -200,6 +293,9 @@ Edit the footer section in `index.html`:
 - **HTML5** - Semantic markup
 - **CSS3** - Modern styling with Flexbox and Grid
 - **JavaScript (ES6+)** - Dynamic functionality
+- **Marked.js** - Markdown parsing
+- **KaTeX** - LaTeX math rendering
+- **Highlight.js** - Syntax highlighting for code blocks
 - **Font Awesome** - Icons
 - **No frameworks** - Pure vanilla JavaScript for simplicity
 

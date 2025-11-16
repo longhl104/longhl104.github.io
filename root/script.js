@@ -1,5 +1,16 @@
 // Blog posts data structure
+// Set 'isMarkdown: true' for markdown posts, otherwise treat as HTML
 const blogPosts = [
+    {
+        id: 7,
+        title: "Linear Algebra Basics for Machine Learning",
+        category: "data-science/machine-learning",
+        date: "2025-01-20",
+        author: "longhl104",
+        excerpt: "Master the essential linear algebra concepts with LaTeX equations and Python code examples.",
+        content: "posts/linear-algebra-basics.md",
+        isMarkdown: true
+    },
     {
         id: 1,
         title: "Getting Started with React Hooks",
@@ -7,7 +18,8 @@ const blogPosts = [
         date: "2025-01-15",
         author: "longhl104",
         excerpt: "Learn how to use React Hooks to manage state and side effects in functional components.",
-        content: "posts/react-hooks.html"
+        content: "posts/react-hooks.html",
+        isMarkdown: false
     },
     {
         id: 2,
@@ -16,7 +28,8 @@ const blogPosts = [
         date: "2025-01-10",
         author: "longhl104",
         excerpt: "A comprehensive guide to creating scalable REST APIs using Express.js and Node.js.",
-        content: "posts/nodejs-api.html"
+        content: "posts/nodejs-api.html",
+        isMarkdown: false
     },
     {
         id: 3,
@@ -25,7 +38,8 @@ const blogPosts = [
         date: "2025-01-05",
         author: "longhl104",
         excerpt: "Understand the basics of machine learning and how to get started with your first model.",
-        content: "posts/ml-intro.html"
+        content: "posts/ml-intro.html",
+        isMarkdown: false
     },
     {
         id: 4,
@@ -34,7 +48,8 @@ const blogPosts = [
         date: "2024-12-28",
         author: "longhl104",
         excerpt: "Learn how to containerize your applications with Docker and improve your deployment workflow.",
-        content: "posts/docker-beginners.html"
+        content: "posts/docker-beginners.html",
+        isMarkdown: false
     },
     {
         id: 5,
@@ -43,7 +58,8 @@ const blogPosts = [
         date: "2024-12-20",
         author: "longhl104",
         excerpt: "Explore the powerful Composition API in Vue 3 and learn how to structure your components better.",
-        content: "posts/vue-composition.html"
+        content: "posts/vue-composition.html",
+        isMarkdown: false
     },
     {
         id: 6,
@@ -52,9 +68,26 @@ const blogPosts = [
         date: "2024-12-15",
         author: "longhl104",
         excerpt: "Master data manipulation and analysis using the Pandas library in Python.",
-        content: "posts/pandas-analysis.html"
+        content: "posts/pandas-analysis.html",
+        isMarkdown: false
     }
 ];
+
+// Configure marked.js for markdown parsing
+if (typeof marked !== 'undefined') {
+    marked.setOptions({
+        highlight: function(code, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+                try {
+                    return hljs.highlight(code, { language: lang }).value;
+                } catch (err) {}
+            }
+            return hljs.highlightAuto(code).value;
+        },
+        breaks: true,
+        gfm: true
+    });
+}
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
@@ -194,14 +227,42 @@ async function loadPost(postId) {
         const response = await fetch(post.content);
         if (response.ok) {
             const content = await response.text();
+            
+            // Process content based on format
+            let processedContent = content;
+            if (post.isMarkdown && typeof marked !== 'undefined') {
+                // Parse markdown to HTML
+                processedContent = marked.parse(content);
+            }
+            
             postContent.innerHTML = `
                 <div class="post-meta">
                     <i class="far fa-calendar"></i> ${formatDate(post.date)}
                     <i class="far fa-user" style="margin-left: 1rem;"></i> ${post.author}
                     <i class="fas fa-folder" style="margin-left: 1rem;"></i> ${post.category}
                 </div>
-                ${content}
+                ${processedContent}
             `;
+            
+            // Render LaTeX math with KaTeX
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(postContent, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+            
+            // Apply syntax highlighting to code blocks
+            if (typeof hljs !== 'undefined') {
+                postContent.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightElement(block);
+                });
+            }
         } else {
             postContent.innerHTML = `
                 <h1>${post.title}</h1>

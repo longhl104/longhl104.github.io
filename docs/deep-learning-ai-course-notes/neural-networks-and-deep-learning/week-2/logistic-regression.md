@@ -95,15 +95,6 @@ Your job when implementing logistic regression is to:
 
 **Learn parameters $w$ and $b$ such that $\hat{y}$ becomes a good estimate of the probability that $y = 1$.**
 
-## Notation Convention
-
-### This Course's Approach
-
-We keep parameters **separate**:
-
-- $w$: weight vector
-- $b$: bias term (intercept)
-
 ## Next Steps
 
 Now that you understand the logistic regression model, the next step is to define a **cost function** to learn parameters $w$ and $b$.

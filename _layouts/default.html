@@ -27,6 +27,10 @@ layout: table_wrappers
             {% if mod_date %}
             <p class="text-small text-grey-dk-000 mb-4">
               <em>Last modified: {{ mod_date | date: site.last_edit_time_format }}</em>
+              {% if content %}
+                <span class="mx-2">•</span>
+                <em>{{ content | reading_time }}</em>
+              {% endif %}
             </p>
             {% endif %}
           {% endif %}

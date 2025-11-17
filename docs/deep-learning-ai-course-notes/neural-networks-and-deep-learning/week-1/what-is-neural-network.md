@@ -7,11 +7,9 @@ last_modified_date: 2025-11-16 09:52:00 +1100
 ---
 
 # What is a Neural Network?
-
 {: .no_toc }
 
 ## Table of contents
-
 {: .no_toc .text-delta }
 
 1. TOC

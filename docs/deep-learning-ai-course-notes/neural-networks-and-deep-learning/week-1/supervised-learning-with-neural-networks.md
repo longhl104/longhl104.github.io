@@ -7,11 +7,9 @@ last_modified_date: 2025-11-17 21:07:00 +1100
 ---
 
 # Supervised Learning with Neural Networks
-
 {: .no_toc }
 
 ## Table of contents
-
 {: .no_toc .text-delta }
 
 1. TOC

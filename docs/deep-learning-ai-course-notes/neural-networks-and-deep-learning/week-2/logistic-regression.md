@@ -3,7 +3,7 @@ title: Logistic Regression
 parent: Week 2 - Neural Networks Basics
 grand_parent: Neural Networks and Deep Learning
 nav_order: 2
-last_modified_date: 2025-11-18 08:27:00 +1100
+last_modified_date: 2025-11-18 08:53:00 +1100
 ---
 
 # Logistic Regression

@@ -8,3 +8,5 @@ has_children: true
 # Neural Networks and Deep Learning
 
 Course 1 of the Deep Learning Specialization.
+
+[View course on Coursera](https://www.coursera.org/learn/neural-networks-deep-learning)

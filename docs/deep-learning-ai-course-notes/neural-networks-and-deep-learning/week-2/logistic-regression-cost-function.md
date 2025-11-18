@@ -76,6 +76,7 @@ $$\mathcal{L}(\hat{y}, 1) = -\log(\hat{y})$$
 (The second term vanishes because $(1-y) = 0$)
 
 **To minimize loss**:
+
 - Want $-\log(\hat{y})$ to be small
 - This means $\log(\hat{y})$ should be large
 - Therefore, $\hat{y}$ should be large
@@ -92,6 +93,7 @@ $$\mathcal{L}(\hat{y}, 0) = -\log(1 - \hat{y})$$
 (The first term vanishes because $y = 0$)
 
 **To minimize loss**:
+
 - Want $-\log(1-\hat{y})$ to be small
 - This means $\log(1-\hat{y})$ should be large
 - Therefore, $(1-\hat{y})$ should be large
@@ -103,6 +105,7 @@ $$\mathcal{L}(\hat{y}, 0) = -\log(1 - \hat{y})$$
 ### Summary
 
 The loss function ensures:
+
 - If $y = 1$: Push $\hat{y} \to 1$
 - If $y = 0$: Push $\hat{y} \to 0$
 
@@ -119,6 +122,7 @@ $$J(w, b) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})$$
 $$J(w, b) = -\frac{1}{m} \sum_{i=1}^{m} \left[y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1-\hat{y}^{(i)})\right]$$
 
 Where:
+
 - $m$ = number of training examples
 - $\hat{y}^{(i)}$ = prediction for example $i$ using parameters $w$ and $b$
 - $y^{(i)}$ = true label for example $i$
@@ -126,10 +130,12 @@ Where:
 ## Key Terminology
 
 **Loss Function** $\mathcal{L}(\hat{y}, y)$:
+
 - Measures error on a **single training example**
 - Compares one prediction to one true label
 
 **Cost Function** $J(w, b)$:
+
 - Measures average error across the **entire training set**
 - This is what we minimize during training
 
@@ -142,8 +148,9 @@ This will be accomplished using **gradient descent**, which we'll explore in the
 ## Connection to Neural Networks
 
 Logistic regression can be viewed as a very simple neural network with:
+
 - No hidden layers
 - Single output unit
 - Sigmoid activation
 
-This makes it an excellent foundation for understanding more complex neural networks. 
+This makes it an excellent foundation for understanding more complex neural networks.

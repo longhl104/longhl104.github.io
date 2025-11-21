@@ -1,5 +1,39 @@
 // custom SCSS (or CSS) goes here
 
+// Improved Heading Hierarchy Styling
+// Make headings more distinguishable with colors, weights, and borders
+
+h1 {
+  font-weight: 600;
+  border-bottom: 3px solid;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-weight: 600;
+  border-bottom: 2px solid;
+  padding-bottom: 0.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+
+  &::before {
+    content: "▸ ";
+  }
+}
+
+h4 {
+  font-weight: 600;
+  // Keep existing uppercase and letter-spacing from base theme
+}
+
 // Floating Back to Top Button
 #floating-back-to-top {
   position: fixed;

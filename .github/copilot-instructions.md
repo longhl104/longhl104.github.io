@@ -19,6 +19,7 @@ This is a Jekyll-based documentation site using the Just the Docs theme, hosted 
 - Use LaTeX for all mathematical expressions
 - Inline math: `$expression$`
 - Block math: `$$expression$$`
+- **Important**: LaTeX in bullet points may not render correctly - use block equations (`$$`) instead of inline equations in lists
 - Use proper notation:
   - Vectors: lowercase bold or with arrow ($w$, $x$)
   - Matrices: uppercase ($X$, $W$)
@@ -253,12 +254,14 @@ Z = np.dot(w.T, X) + b
 - ❌ Omit code examples
 - ❌ Use inline code blocks for multi-line code
 - ❌ Forget to link related lessons
+- ❌ Use inline math (`$...$`) in bullet point lists - it may not render
 
 ## Do
 
 - ✅ Use Jekyll link syntax: `{% link path/to/file.md %}`
 - ✅ Structure content with clear sections
 - ✅ Use LaTeX for all math: `$x$` and `$$equation$$`
+- ✅ Use block equations (`$$`) when listing multiple equations (instead of bullet points with inline math)
 - ✅ Provide code examples with comments
 - ✅ Use proper code blocks with syntax highlighting
 - ✅ Link related lessons for context

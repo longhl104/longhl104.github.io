@@ -20,12 +20,14 @@ This is a Jekyll-based documentation site using the Just the Docs theme, hosted 
 - Inline math: `$expression$`
 - Block math: `$$expression$$`
 - **Important**: LaTeX in bullet points may not render correctly - use block equations (`$$`) instead of inline equations in lists
+- **Important**: LaTeX with pipe symbols (like `$|z|$` for absolute value) may break markdown table syntax - use alternative notation or move to block equations
 - Use proper notation:
   - Vectors: lowercase bold or with arrow ($w$, $x$)
   - Matrices: uppercase ($X$, $W$)
   - Scalars: regular text ($b$, $m$)
   - Superscripts for examples: $x^{(i)}$, $y^{(i)}$
   - Subscripts for features: $x_1$, $w_j$
+  - Absolute value: Use `\|` or `\vert` instead of `|` in tables to avoid conflicts: `$\|z\|$` or `$\vert z \vert$`
 
 ### Code Examples
 
@@ -255,6 +257,7 @@ Z = np.dot(w.T, X) + b
 - ❌ Use inline code blocks for multi-line code
 - ❌ Forget to link related lessons
 - ❌ Use inline math (`$...$`) in bullet point lists - it may not render
+- ❌ Use pipe symbol `|` in LaTeX within markdown tables (e.g., `$|z|$`) - it breaks table parsing
 
 ## Do
 
@@ -262,6 +265,7 @@ Z = np.dot(w.T, X) + b
 - ✅ Structure content with clear sections
 - ✅ Use LaTeX for all math: `$x$` and `$$equation$$`
 - ✅ Use block equations (`$$`) when listing multiple equations (instead of bullet points with inline math)
+- ✅ Use `\|` or `\vert` for absolute value in tables: `$\|z\|$` or `$\vert z \vert$`
 - ✅ Provide code examples with comments
 - ✅ Use proper code blocks with syntax highlighting
 - ✅ Link related lessons for context

@@ -29,6 +29,41 @@ h3 {
   }
 }
 
+// Improved Breadcrumb Navigation for Long Titles
+.breadcrumb-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.breadcrumb-nav-list-item {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  
+  // Allow text to wrap
+  span, a {
+    display: inline-block;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Ensure separator doesn't wrap separately
+  &::after {
+    flex-shrink: 0;
+  }
+
+  // Responsive: reduce max-width on smaller screens
+  @media (max-width: 768px) {
+    span, a {
+      max-width: 150px;
+    }
+  }
+}
+
 h4 {
   font-weight: 600;
   // Keep existing uppercase and letter-spacing from base theme

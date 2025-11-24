@@ -169,17 +169,7 @@ Imagine a classifier that is:
 - **Mostly linear** (underfits most of the data) → High bias
 - **Extremely flexible in some regions** (overfits noise/outliers) → High variance
 
-```
-Classifier with both problems:
-┌─────────────────────────┐
-│    o    o               │  Mostly linear (high bias)
-│  o        x  x          │  Doesn't capture overall curve
-│    o  ──x───x           │
-│  ────╱─╲────────        │  But has wiggles around
-│     ╱  o╲    x  x       │  specific outliers (high variance)
-│   ╱  o   ╲     x        │
-└─────────────────────────┘
-```
+![Three scatter plots showing binary classification with circular and cross-shaped data points. Left plot labeled high bias shows a straight diagonal line poorly separating the classes. Middle plot labeled just right shows a curved boundary fitting between the two classes appropriately. Right plot labeled high variance shows an irregular wiggly boundary that wraps tightly around circular data points, demonstrating overfitting.](/assets/images/deep-learning/improving-deep-neural-networks/week-1/classification_bias_variance_diagram.png)
 
 **Characteristics**:
 

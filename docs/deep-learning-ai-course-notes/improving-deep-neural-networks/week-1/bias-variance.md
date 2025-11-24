@@ -307,4 +307,3 @@ If either assumption is violated, you need more sophisticated analysis (covered 
 12. **Visual intuition**: Linear = high bias, wiggly = high variance, smooth curve = just right
 13. **High-dim complexity**: Bias/variance can vary across different input regions
 14. **Diagnostic first**: Always diagnose before trying to fix
-15. **Systematic approach**: Next lesson covers the "basic recipe" for improvement

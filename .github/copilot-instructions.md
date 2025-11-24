@@ -51,7 +51,7 @@ This is a Jekyll-based documentation site using the Just the Docs theme, hosted 
   ```
 - **Link to specific section** (with fragment identifier):
   ```markdown
-  [vectorization]({% link docs/deep-learning-ai-course-notes/neural-networks-and-deep-learning/week-2/vectorizing-logistic-regression.md %}#vectorizing-forward-propagation)
+  [backpropagation]({% link docs/deep-learning-ai-course-notes/neural-networks-and-deep-learning/week-3/gradient-descend-for-neural-networks.md %}#backpropagation-equations)
   ```
 - **Never use** relative links like `gradient-descent.md` or `../file.md`
 

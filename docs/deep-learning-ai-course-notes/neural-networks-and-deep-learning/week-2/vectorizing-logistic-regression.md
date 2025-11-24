@@ -63,7 +63,7 @@ for i in range(m):
 
 ### Recall: Training Data Matrix $X$
 
-From our [notation section]({% link docs/deep-learning-ai-course-notes/neural-networks-and-deep-learning/week-2/what-is-neural-network.md %}), we defined:
+From our [notation section]({% link docs/deep-learning-ai-course-notes/neural-networks-and-deep-learning/week-1/what-is-neural-network.md %}), we defined:
 
 $$X = \begin{bmatrix}
 | & | & & | \\

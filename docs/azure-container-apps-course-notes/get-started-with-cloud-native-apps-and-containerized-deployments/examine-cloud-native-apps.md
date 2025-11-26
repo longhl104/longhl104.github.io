@@ -3,7 +3,6 @@ title: Examine Cloud-Native Apps
 parent: Get Started with Cloud-Native Apps and Containerized Deployments
 grand_parent: Deploy Cloud-Native Apps Using Azure Container Apps
 nav_order: 2
-last_modified_date: 2025-11-26 20:43:00 +0000
 ---
 
 # Examine Cloud-Native Apps

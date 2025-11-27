@@ -56,7 +56,7 @@ Before embarking on a cloud-native project, it's essential to understand real-wo
 
 The application consists of **5 microservices** working together:
 
-![Architecture diagram showing Azure Container Apps environment with five microservices: Ingestion service receives external traffic, Package service handles package data, Drone Scheduler coordinates timing, Delivery service manages deliveries, and Workflow service orchestrates processes. All services connect to Azure Container Registry on the left. On the right, the environment integrates with Azure Application Insights for monitoring and Azure Log Analytics workspace for centralized logging, which feeds into Azure Monitor for observability](/assets/images/azure-container-apps/fabrikam-drone-delivery-architecture-2.png)
+![Architecture diagram showing Azure Container Apps environment with five microservices: Ingestion service receives external traffic via HTTP, Workflow service orchestrates processes and connects to Azure Service Bus and Managed Identities, Package service stores data in Azure Cosmos DB for MongoDB API, Drone Scheduler service manages timing with Azure Cosmos DB, and Delivery service handles deliveries using Azure Cache for Redis. All services share monitoring through Azure Log Analytics Workspace connected to Application Insights and Azure Monitor. Azure Key Vault provides secrets management for Managed Identities. The environment is contained within a light blue boundary representing the Azure Container Apps Environment](/assets/images/azure-container-apps/fabrikam-drone-delivery-architecture.png)
 
 ### Key Architectural Features
 

@@ -39,8 +39,8 @@ Output: "bb"
 
 **Constraints:**
 
-- `1 <= s.length <= 1000`
-- `s` consist of only digits and English letters.
+- $1 \leq \text{s.length} \leq 1000$
+- $s$ consist of only digits and English letters.
 
 **LeetCode Link:** [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
@@ -60,8 +60,8 @@ This problem can be solved using the **"Expand Around Centers"** technique. The 
 
 1. **Find maximum length**: For each position, expand around center to find the longest palindrome
 2. **Handle two cases**:
-   - Odd-length palindromes: center at `i`
-   - Even-length palindromes: center between `i` and `i+1`
+   - Odd-length palindromes: center at $i$
+   - Even-length palindromes: center between $i$ and $i+1$
 3. **Extract result**: Once we know the maximum length, scan through the string to find the actual palindrome
 
 ---
@@ -123,14 +123,14 @@ public class Solution {
 
 ## Complexity Analysis
 
-### Time Complexity: O(n²)
+### Time Complexity: $O(n^2)$
 
-- We check each of the `n` positions as potential centers
-- For each center, we expand outwards in the worst case `O(n)` times
-- The final scan to extract the palindrome is also `O(n)`
-- Overall: `O(n²)`
+- We check each of the $n$ positions as potential centers
+- For each center, we expand outwards in the worst case $O(n)$ times
+- The final scan to extract the palindrome is also $O(n)$
+- Overall: $O(n^2)$
 
-### Space Complexity: O(1)
+### Space Complexity: $O(1)$
 
 - We only use a constant amount of extra space for variables
 - The input string is not modified
@@ -140,15 +140,15 @@ public class Solution {
 
 ## Alternative Approaches
 
-### 1. Brute Force - O(n³)
+### 1. Brute Force - $O(n^3)$
 
 Check every possible substring to see if it's a palindrome.
 
-### 2. Dynamic Programming - O(n²) time, O(n²) space
+### 2. Dynamic Programming - $O(n^2)$ time, $O(n^2)$ space
 
-Use a 2D table to store whether substring `s[i:j]` is a palindrome.
+Use a 2D table to store whether substring $s[i:j]$ is a palindrome.
 
-### 3. Manacher's Algorithm - O(n) time
+### 3. Manacher's Algorithm - $O(n)$ time
 
 Advanced algorithm that can solve this in linear time, but much more complex to implement.
 

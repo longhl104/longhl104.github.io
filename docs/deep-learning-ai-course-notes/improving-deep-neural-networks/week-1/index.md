@@ -1,6 +1,6 @@
 ---
 title: Week 1 - Practical Aspects of Deep Learning
-parent: Improving Deep Neural Networks
+parent: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
 grand_parent: DeepLearning.AI Course Notes
 nav_order: 1
 has_children: true

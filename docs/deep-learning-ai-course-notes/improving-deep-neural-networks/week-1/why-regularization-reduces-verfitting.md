@@ -1,7 +1,7 @@
 ---
 title: Why Regularization Reduces Overfitting?
-parent: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
-grand_parent: DeepLearning.AI Course Notes
+parent: Week 1 - Practical Aspects of Deep Learning
+grand_parent: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
 nav_order: 5
 ---
 

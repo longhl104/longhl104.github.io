@@ -1,7 +1,7 @@
 ---
 title: Regularization
-parent: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
-grand_parent: DeepLearning.AI Course Notes
+parent: Week 1 - Practical Aspects of Deep Learning
+grand_parent: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
 nav_order: 4
 last_modified_date: 2025-11-26 08:36:00 +1100
 ---

@@ -27,7 +27,7 @@ We are committed to protecting your privacy. Rolldom is designed to be played wi
 ### 2.1 Information We Do NOT Collect
 
 - We do **not** collect your name, email address, or any personally identifiable information
-- We do **not** collect location data
+- We do **not** collect precise location data (GPS)
 - We do **not** access your camera or microphone
 - We do **not** access your contacts or files
 - We do **not** collect payment information
@@ -60,8 +60,21 @@ Rolldom uses the following third-party services that may collect data according 
 |---|---|---|
 | **Unity Gaming Services** | Multiplayer networking and relay | [unity.com/legal/privacy-policy](https://unity.com/legal/privacy-policy) |
 | **Google Play Services** | App distribution and crash reporting | [policies.google.com/privacy](https://policies.google.com/privacy) |
+| **Google AdMob** | In-game advertisements | [policies.google.com/privacy](https://policies.google.com/privacy) |
 
-We do not use advertising SDKs. We do not sell or share your data with advertisers.
+### Advertising (AdMob)
+
+Rolldom displays advertisements provided by **Google AdMob**. AdMob may collect and use the following data to serve relevant ads:
+
+- **Advertising ID** — a resettable device identifier used for ad personalisation
+- **App activity** — in-app interactions used to measure ad performance
+- **Approximate location** — derived from IP address for regional ad targeting
+
+You can opt out of personalised ads at any time:
+
+- On Android: **Settings → Google → Ads → Delete advertising ID** (Android 12+) or **Opt out of Ads Personalisation** (Android 11 and below)
+
+We do not sell your personal data. Ad data is processed by Google in accordance with their privacy policy.
 
 ---
 
@@ -116,3 +129,4 @@ Email: longlunglay1998@gmail.com
 ---
 
 *This privacy policy was last updated on March 21, 2026.*
+

@@ -16,7 +16,7 @@
 title: Long's Blog
 description: Long's personal blog sharing knowledge on programming, technology, and personal development.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://longhl104.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://longcode.online" # the base hostname & protocol for your site, e.g. http://example.com
 repository: longhl104/longhl104.github.io # for github-metadata
 
 permalink: pretty
